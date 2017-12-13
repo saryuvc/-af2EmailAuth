@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate style="border: 1px solid grey;">
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input #email formControlName="email" type="email" placeholder="Your email address"
+        [class.invalid]="!loginForm.controls.email.valid &&
+          loginForm.controls.email.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  &&
+      loginForm.controls.email.dirty">
+      <p>Please enter a valid email.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input #password formControlName="password" type="password" placeholder="Your password"
+        [class.invalid]="!loginForm.controls.password.valid &&
+          loginForm.controls.password.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  &&
+      loginForm.controls.password.dirty">
+      <p>Your password needs more than 6 characters.</p>
+    </ion-item>
+
+    <button ion-button block color="dark" type="submit">
+      Login
+    </button>
+  </form>
+
+  <div style="border: 1px solid grey;">
+   <ion-list inset>
+    <form [formGroup]="emailPasswordForm">
+      <div id="recaptcha-container"></div>
+      <ion-item>
+        <ion-label stacked>Phone Number</ion-label>
+        <ion-input type="number" formControlName="phoneNumber"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="primary" block tappable (click)="signIn()" [disabled]="!emailPasswordForm.valid">Log in</button>
+        </ion-col>
+      </ion-row>
+      </form>
+  </ion-list>
+  </div>
+    <br><br>
+  <div style="border: 1px solid grey;">
+<button ion-button block round outline (click)="goToResetPassword()">
+  Forgot Password
+</button>
+  </div>
+<button ion-button round block outline (click)="createAccount()">
+Create a new account
+</button>
+
+<br><br>
+<button ion-button full color="danger" (click)="loginwithgoogle()">
+    <ion-icon ios="logo-googleplus" md="logo-googleplus" style="font-size: 1.92em;"></ion-icon> 
+</button>
+
+<button ion-button full (click)="facebookLogin()">
+   <ion-icon ios="logo-facebook" md="logo-facebook" style="font-size: 1.92em;"></ion-icon>
+</button>
+<button ion-button full style="background-color: #093a92;" (click)="loginwithlinkedIn()">
+  <ion-icon ios="logo-linkedin" md="logo-linkedin" style="font-size: 1.92em;"></ion-icon>
+</button>
+  
+
+  
+
+
+</ion-content>

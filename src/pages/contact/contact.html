@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Invite Friends</ion-title>
+  </ion-navbar>
+  <!--<ion-navbar class="nav-search">
+    <div *ngIf="invitelist && invitelist.length > 0">
+      <ion-searchbar [(ngModel)]="searchContact" (ionInput)="getSearchedQuery()"
+        placeholder="Search for contact" showCancelButton="true" cancelButtonText="Done">
+      </ion-searchbar>
+    </div>
+  </ion-navbar>-->
+</ion-header>
+<ion-content>
+  <!--<div class="empty-list">
+    <h1><ion-icon name="md-search"></ion-icon></h1>
+    <p>No contact to invite</p>
+  </div>-->
+
+  <ion-list class="avatar-list">
+    <div *ngFor="let contact of invitelistToShow">
+      <ion-item>        
+        <h2>{{contact.displayName}}</h2>
+        <p><small>{{contact.phoneNumbers[0].value}}</small></p>
+        <button ion-button item-end (click)="invite(contact.phoneNumbers[0].value)">Invite</button>      
+      </ion-item>
+    </div>
+  
+  </ion-list>
+</ion-content>
+  
